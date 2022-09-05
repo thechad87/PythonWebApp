@@ -1,0 +1,98 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+
+
+{% include 'accounts/status.html' %}
+
+<br>
+<div class="row mx-2">
+  <div class="col-md-5 "> 
+  <h5>CUSTOMERS</h5>
+  <hr>
+      <div class="card card-body">
+      
+        <a class="btn btn-primary btn-sm btn-block" href="">Create Customer</a>
+              <table class="table table-sm">
+                  <tr>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                  </tr>
+
+                  {% for customer in customers %}
+                      <tr>
+                          <td>{{customer.name}}</td>
+                          <td>{{customer.phone}}</td>
+                      </tr>
+                  {% endfor %}
+              </table>
+      </div>
+  </div>
+
+
+    <div class="col-md-7"> 
+      <h5>Last 5 orders</h5>
+      <hr>
+        
+          <div class="card card-body">
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'create_order' %}">Create Order</a>
+                  <table class="table table-sm">
+                      <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Date Orderd</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Remove</th>
+                      </tr>
+                      {% for order in orders %}
+                        <tr>
+                            <td>{{order.product}}</td>
+                            <td>{{order.date_created}}</td>
+                            <td>{{order.status}}</td>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
+                            <td><a class="btn btn-sm btn-danger"  href="{% url 'delete_order' order.id %}">Delete</a></td>
+                        </tr> 
+                      {% endfor %}
+                  </table>
+          </div>
+          <br>
+      </div>
+</div>
+  <!-- card text-white bg-dark -->
+
+{% endblock%}
+
+<!-- <h1>This is the dashboard</h1> -->
+
+<!-- <div class="card m-2 text-center">
+    <div class="row mx-auto my-1">
+        <div class="col-sm-3 card text-white bg-dark m-1" style="max-width: 18rem;">
+            <div class="card-header">Global Cases</div>
+              <div class="card-body">
+              <h5 class="card-title mx-auto">71,094,482</h5>
+              <p class="card-text"new cases (836,957)</p>
+            </div>
+          </div>
+          <div class="col-sm-3 card text-white bg-info m-1" style="max-width: 18rem;">
+            <div class="card-header">Global Deaths</div>
+            <div class="card-body">
+              <h5 class="card-title">Dark card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+          <div class="col-sm-3 card text-white bg-danger m-1" style="max-width: 18rem;">
+            <div class="card-header">Global Recovery</div>
+            <div class="card-body">
+              <h5 class="card-title">Dark card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+          <div class="col-sm-3 card text-white bg-success m-1" style="max-width: 18rem;">
+            <div class="card-header">Global Active</div>
+            <div class="card-body">
+              <h5 class="card-title">Dark card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div> 
+    </div>
+  </div> -->
