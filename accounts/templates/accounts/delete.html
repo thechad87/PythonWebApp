@@ -2,13 +2,21 @@
 {% load static %}
 {% block content %}
 
-<p>Are you sure you want to delete the "{{item}}"?</p>
-<form action="{% url 'delete_order' item.id %}" method="POST">
+<br>
+    <div class="row">
+        <div class="col-m-6">
+            <div class="card card-body">
 
-    {% csrf_token %}
-    <a href="{% url 'dashboard' %}">Cancel</a>
-    <input type="submit" name="confim">
+            <p>Are you sure you want to delete the "{{item}}"?</p>
+            <form action="{% url 'delete_order' item.id %}" method="POST">
 
-</form>
+                {% csrf_token %}
+                <a href="{% url 'dashboard' %}">Cancel</a>
+                <input type="submit" name="confim">
+            </form>
+        </div>
+    </div>
+</div>
+
 
 {% endblock %} 

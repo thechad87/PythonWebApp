@@ -51,7 +51,7 @@ def createOrder(request):
         if form.is_valid():
             form.save()
             # this redirect the data the a specific directory 
-            return redirect('/dashboard')
+            return redirect('/')
 
     context = {'form':form}
     return render(request, 'accounts/order_form.html', context)
@@ -80,3 +80,4 @@ def deleteOrder(request, pk):
 
     context = {'item': order}
     return render(request, 'accounts/delete.html', context)
+
