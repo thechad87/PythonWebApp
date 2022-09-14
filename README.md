@@ -1,2 +1,2 @@
 # PythonWebApp
-A simple e-commerce application 
+A simple e-commerce dashboard application 
